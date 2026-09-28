@@ -18,3 +18,6 @@ async def fetch_users(url):
                 raise
 
             await asyncio.sleep(2**attempt)
+
+
+fetch_users('http://user.com')

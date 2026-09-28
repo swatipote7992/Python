@@ -10,7 +10,7 @@
 
 
 num_list = [1, 2, 2, 3, 3, 3, 4]
-result2_dict: dict = {}
+result_dict: dict = {}
 for num in num_list:
-    result2_dict[num] = result2_dict.get(num, 0) + 1
-print(result2_dict)
+    result_dict[num] = result_dict.get(num, 0) + 1
+print(result_dict)

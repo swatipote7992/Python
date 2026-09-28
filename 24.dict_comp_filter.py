@@ -19,3 +19,4 @@ print(comp_dict)
 
 print(user_dict.keys())
 print(user_dict.values())
+print(user_dict.get)

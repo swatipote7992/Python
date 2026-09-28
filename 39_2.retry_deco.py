@@ -8,24 +8,29 @@
 from functools import wraps
 import time
 
+
 def retry_deco(max_attempt=3):
     def decorator(func):
         @wraps(func)
-        def wrapper(*args,**kwargs):
-            for i in range(1, max_attempt+1):
+        def wrapper(*args, **kwargs):
+            for i in range(1, max_attempt + 1):
                 try:
-                    func(*args, *kwargs)
+                    return func(*args, **kwargs)
                 except Exception as e:
-                    print(f"Attempt {i} failed")
+                    print(f"Attempt {i} failed: {e}")
                     if i == max_attempt:
                         raise
-                    time.sleep(2 **(i-1))
-            return wrapper
-        return decorator
-    return retry_deco
+                    time.sleep(2**i)
+
+        return wrapper
+
+    return decorator
 
 
 @retry_deco(max_attempt=3)
 def call_api():
-    print('Calling API..')
-    return Exception
+    print("Calling API..")
+    raise Exception("API unreachable")
+
+
+call_api()

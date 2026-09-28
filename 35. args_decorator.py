@@ -10,7 +10,7 @@ def args_decorator(func):
     return wrapper
 
 @args_decorator
-def say_hello(a,b,c):
-    print('Hello', a, b, c)
+def say_hello(*args):
+    print("Hello", *args)
 
 say_hello(1,2,3)

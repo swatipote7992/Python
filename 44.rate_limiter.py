@@ -8,27 +8,30 @@
 # Request allowed
 # Rate limit exceeded
 
-from collections import deque
+from collections import defaultdict,deque
 import time
 
 class RateLimiter:
     def __init__(self, limit, window):
         self.limit = limit
         self.window = window
-        self.request = deque()
+        self.requests = defaultdict(deque)
 
-    def allow(self):
+    def allow(self, req: str):
         now = time.time()
-        while self.request and now-self.request[0] >= self.window:
-            self.request.popleft()
-            if len(self.request) >= self.limit:
-                return False
-            self.request.append(now)
-            return True
+        timestamps = self.requests[req]
+        while timestamps and timestamps[0] <= now - self.window:
+            timestamps.popleft()
+        if len(timestamps) >= self.limit:
+            return False
+        timestamps.append(now)
+        return True
+
+        
 limiter = RateLimiter(3, 10)
 
 for _ in range(4):
-    if limiter.allow():
+    if limiter.allow('newreq'):
         print("Request allowed")
     else:
         print("Rate limit exceeded")
