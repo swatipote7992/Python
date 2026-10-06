@@ -19,12 +19,12 @@ class RateLimiter:
 
     def allow(self, req: str):
         now = time.time()
-        timestamps = self.requests[req]
-        while timestamps and timestamps[0] <= now - self.window:
-            timestamps.popleft()
-        if len(timestamps) >= self.limit:
+        timestamp = self.requests[req]
+        while timestamp and timestamp[0] <= now - self.window:
+            timestamp.popleft()
+        if len(timestamp) >= self.limit:
             return False
-        timestamps.append(now)
+        timestamp.append(now)
         return True
 
         

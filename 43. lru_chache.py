@@ -57,6 +57,8 @@ class LRUCache:
         self.cache : OrderedDict[int, str] = OrderedDict()
 
     def put(self, key: int, value: str):
+        if key in self.cache:
+            self.cache.move_to_end(key)
         self.cache[key] = value
         if len(self.cache) > self.capacity:
             self.cache.popitem(last=False)
@@ -65,7 +67,6 @@ class LRUCache:
         if key not in self.cache:
             return -1
         self.cache.move_to_end(key)
-        print(self.cache)
         return self.cache[key]
     
 
@@ -73,6 +74,7 @@ class LRUCache:
 lru = LRUCache(2)
 lru.put(1, 'A')
 lru.put(2, 'B')
+print(lru)
 print(lru.get(2))
 lru.put(2, 'C')
 print(lru.get(2))
