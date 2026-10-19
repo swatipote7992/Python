@@ -1,27 +1,41 @@
 {
-    // Disable IntelliSense suggestions and autocomplete for this project only
+    // IntelliSense
     "editor.quickSuggestions": {
-        "other": "off",
+        "other": "on",
         "comments": "off",
         "strings": "off"
     },
-    "editor.suggestOnTriggerCharacters": false,
-    "editor.acceptSuggestionOnEnter": "off",
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.wordBasedSuggestions": "off",
-    "editor.parameterHints.enabled": false,
-    "editor.inlineSuggest.enabled": false,
-    "editor.hover.enabled": "off",
-    "editor.snippetSuggestions": "none",
-    "editor.tabCompletion": "off",
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "editor.parameterHints.enabled": true,
+    "editor.hover.enabled": "on",
+    "editor.snippetSuggestions": "inline",
+    "editor.tabCompletion": "on",
 
-    // Python language server (Pylance) features
-    "python.analysis.completeFunctionParens": false,
-    "python.analysis.autoImportCompletions": false,
-    "python.analysis.inlayHints.variableTypes": false,
-    "python.analysis.inlayHints.functionReturnTypes": false,
+    // Python language server (Pylance)
+    "python.languageServer": "Pylance",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
 
-    // AI inline completions (e.g. GitHub Copilot), if installed
+    // Formatting (Ruff)
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+
+    // Run tests with pytest from the test file's own folder
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": ["katas", "-q"],
+
+    // AI inline completions (e.g. GitHub Copilot), left off
     "github.copilot.enable": {
         "*": false
     }
