@@ -13,3 +13,37 @@
 # The running score of each game is described in a manner peculiar to tennis: scores from zero to three points are described as “love”, “fifteen”, “thirty”, and “forty” respectively.
 # If at least three points have been scored by each player, and the scores are equal, the score is “deuce”.
 # If at least three points have been scored by each side and a player has one more point than their opponent, the score of the game is “advantage” for the player in the lead.
+
+NAMES = ["Love", "Fifteen", "Thirty", "Forty"]
+
+
+class TennisGame:
+    def __init__(self):
+        self.player1_points = 0
+        self.player2_points = 0
+
+    def point_won_by(self, player):
+        if player == "player1":
+            self.player1_points += 1
+        else:
+            self.player2_points += 1
+
+    def score(self):
+        if self.player1_points == self.player2_points:
+            if self.player1_points >= 3:
+                return "Deuce"
+            return f"{NAMES[self.player1_points]}-All"
+        if max(self.player1_points, self.player2_points) >= 4:
+            return self.end_game()
+        return f"{NAMES[self.player1_points]}-{NAMES[self.player2_points]}"
+
+    def end_game(self):
+        diff = self.player1_points - self.player2_points
+        if diff >= 2:
+            return "Win for player1"
+        if diff <= -2:
+            return "Win for player2"
+        if diff == 1:
+            return "Advantage player1"
+        if diff == -1:
+            return "Advantage player2"
