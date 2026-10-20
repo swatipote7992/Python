@@ -1,6 +1,6 @@
 import math
 
-
+# Print basics
 print("Hello, World!")
 print("This is a sample Python application.")
 print("*" * 10)
@@ -17,7 +17,7 @@ print(len(course_name))  # Length of the string
 print(course_name.upper())  # Convert to uppercase
 print(course_name[0])  # Accessing first character
 print(course_name[-1])  # Accessing last character
-print(course_name[0:3])  # Splitting the string into a list
+print(course_name[0:3])  # First 3 characters
 print(course_name[0:])  # Slicing the string
 print(course_name[:])  # Copy of original string
 
@@ -45,10 +45,10 @@ print(full_name.title())
 print(middle_name.rstrip())
 # Find the index of the first occurrence of a substring
 print(first_name.find("o"))
+print(first_name.find("a"))  # Find the index of a substring that doesn't exist
 
 # Replace a substring with another substring
 print(first_name.replace("o", "a"))
-print(first_name.find("a"))  # Find the index of a substring that doesn't exist
 
 print("doe" in full_name)  # Check if a substring exists in the string
 # Check if a substring does not exist in the string
@@ -90,6 +90,13 @@ print(x)
 print(math.ceil(3.2))  # Ceiling 4
 print(math.floor(3.7))  # Floor 3
 
+# max on data_structure
+nums = [1, 2, 3, 4]
+print(max(nums))
+num_set = {1, 46, 23}
+print(max(num_set))
+num_dict = {1: "name", 22: "house", 76: "87"}
+print(max(num_dict))
 
 # Input from user
 # name = input("Enter your name: ")
@@ -244,4 +251,4 @@ print(f"We have {count} even numbers.")
 a = 5
 print(a)
 del a
-print(a)
+# print(a) - a is not defined

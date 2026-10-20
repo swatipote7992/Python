@@ -16,8 +16,7 @@ for user in users:
         result[key] = value
 print(result)
 
-print({
-    user["id"]: user["name"]
-    for user in users
-    if user["active"]
-})
+
+result_comp = {user["id"]: user["name"] for user in users if user["active"]}
+
+print(result_comp)

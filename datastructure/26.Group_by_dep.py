@@ -21,3 +21,10 @@ for user in users_list:
     result_dict[dept].append(user["name"])
 
 print(result_dict)
+
+result1_dict: dict = {}
+for user in users_list:
+    dept = user["department"]
+    result1_dict.setdefault(dept, []).append(user["name"])
+
+print(result1_dict)
